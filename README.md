@@ -49,7 +49,7 @@ npm start
 <br>
 
 ### Demo
-https://timestamp.zeenux0.repl.co/
+https://file-metadata-finder.zeenux0.repl.co
 
 ![My Image](img/preview.png)
 
