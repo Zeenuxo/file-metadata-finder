@@ -1,34 +1,94 @@
 <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-<html>
-   <head>
-      <title>File Metadata</title>
-      <link rel="shortcut icon" href="https://cdn.freecodecamp.org/universal/favicons/favicon-32x32.png" type="image/x-icon"/>
-      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <title>File Metadata Micro-service - Backend Project </title>
+      <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css">
+      <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"/> -->
       <link href="/public/style.css" rel="stylesheet" type="text/css">
-   </head>
+    </head>
 
-   <body>
-      <div class="container">
-        <h2>API Project: File Metadata Microservice</h2>
 
-        <h3>Usage:</h3>
-        <p>
-          Please Upload a File ...
-        </p>
-        <div class="view">
-          <h4 id="output"></h4>
-          <form enctype="multipart/form-data" method="POST" action="/api/fileanalyse">
-            <input id="inputfield" type="file" name="upfile">
-            <input id="button" type="submit" value="Upload">
-          </form>
+
+<body>
+<main class="app">
+<div class="container">
+
+        <!-- main grid start -->
+        <div class="maingrid">
+
+        <div class="photo float">
+        <img src="/public/img.svg" alt="" class="src">
         </div>
-      </div>
-      <div class="footer">
-        <p>
-          by 
-          <a href="http://www.freecodecamp.com">freeCodeCamp</a>
+
+        <div class="title">
+        <h2>File Metadata Microservice</h2>
+        </div>
+
+        <div class="subtitle">
+        <p>Upload your file and let the Microservice give you 
+          metadata information about your file: <br>
+        🔸file name <br>
+        🔸file type <br>
+        🔸file size <br>
+
+        <br>
+        <b>Example Output:</b><br>
+        <code>
+        {<br>"name":"hello world.txt", <br>"type":"text/plain", <br>"size":15<br>}
+        </code>
         </p>
-      </div>
-   </body>
+
+        </div>
+
+        <div class="uploadui">
+        <p class="icon"> ⚡<b>Upload File Here </b></p>
+
+        <form enctype="multipart/form-data" method="POST" action="/api/fileupload">
+
+
+
+        <div class="wrapper" data-text="">
+        <!-- Browse File & Display name,  "upfile" links to Backend -->
+        <input name="upfile" type="file" class="uploadbox"  id="file" value="">
+        <p class="file-name"></p> 
+        </div>
+
+        <!-- Upload Button -->
+        <input class="button" id="button" type="submit" value="Get my Metadata">
+        </form>
+        </div>
+
+        <!-- main grid end -->
+        </div>
+
+</div>
+</main>
+
+
+
+<script>
+const file = document.querySelector('#file');
+file.addEventListener('change', (e) => {
+  // Get the selected file
+  const [file] = e.target.files;
+
+  // Get the file name and size
+  const { name: fileName} = file;
+
+  // Show the uploaded file name
+  const fileuloaded = `${fileName}`;
+  document.querySelector('.file-name').textContent = fileName;
+});
+</script>
+
+
+
+</body>
 </html>
+
+
+

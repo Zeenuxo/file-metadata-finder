@@ -1,42 +1,187 @@
-/****** Main Styling ******/
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  outline: 0;
+  line-height: 1.4rem; 
+}
+
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 16px;
-  color: #222;
-  background-color: #ECF0F1;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+
+  background-color: #f2a5a5;
+  background-image: -webkit-linear-gradient(bottom left, #f2a5a5 0%, #e6d8a7 100%);
+  background-image: linear-gradient(to top right,#ffafac 0%, #e6d8a7 100%);
 }
 
-.container {
-  padding: 0;
-  margin-top: 40px;
+.container{
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  margin-left: 5rem;
+  margin-right: 5rem;
 }
 
-.footer {
-  margin-top: 60px;
+.maingrid{
+  display: grid;
+  grid-template-columns: repeat(1, 2fr);
+  grid-template-rows: 0.5fr, 0.5fr, 1fr;
+
+  grid-template-areas: 
+  "photo title"
+  "photo  subtitle"
+  "photo uploadui";
+
+  row-gap: 1rem;
+  column-gap: 2.5rem;
 }
 
-a {
-  color: #2574A9;
+.title{display: grid; grid-area: title; font-size: 1.4rem; margin-bottom: 2rem;}
+.subtitle{display: grid; grid-area: subtitle; margin-bottom: 1.3rem;}
+.photo{display: grid; grid-area: photo;}
+.uploadui{display: grid; grid-area: uploadui;}
+
+
+.photo img{
+    width: 300px;
+    height: 100%;
+    object-fit:fill;
 }
 
-input {
-  display: block;
+
+
+
+/* Upload Section (Browse & Upload Btn) */
+.uploadui {
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(66, 50, 98, 0.35);
+  border-radius: 3px;
+}
+
+
+/* Lightning Icon */
+.icon {
+  display: flex;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Uploaded file name to display */
+.file-name {
+  position: absolute;
+  bottom: 18px;
+  left: 30px;
+  font-size: 1.3rem;
+  color: black;
+  z-index: 100;
+}
+
+/* Browse file form-control  */
+.wrapper {
   position: relative;
-  margin: 10px auto;
+  width: 100%;
+  height: 60px;
+  margin-bottom: 2rem;
+}
+.wrapper:after {
+  content: attr(data-text);
+  font-size: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #fff;
+  padding: 10px 15px;
+  display: block;
+  width: calc(100% - 40px);
+  pointer-events: none;
+  z-index: 20;
+  height: 40px;
+  line-height: 40px;
+  color: #999;
+  border-radius: 5px 10px 10px 5px;
+  font-weight: 300;
 }
 
-input#button {
-  width: 230px;
+.wrapper:before {
+  content: "Upload File";
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  height: 60px;
+  background: #6d98ff;
+  color: #fff;
+  font-weight: 700;
+  z-index: 25;
+  font-size: 16px;
+  line-height: 60px;
+  padding: 0 15px;
+  text-transform: uppercase;
+  pointer-events: none;
+  border-radius: 0 5px 5px 0;
+}
+.wrapper:hover:before {
+  background: #ff92a1;
+}
+.wrapper input {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  display: block;
+  cursor: pointer;
+  width: 100%;
 }
 
-.view {
-  position:relative;
-  margin: auto;
-  margin-top: 40px;
-  border: 1px  solid  #aaa;
-  padding: 20px;
-  width: 60%;
-  min-width: 400px;
+
+/* Upload Button */
+.button {
+  width: 100%;
+  border: none;
+  padding: 14px;
+  border-radius: 3px;
+  background-image: linear-gradient(to right, #89CAFF, #6589FF);
+  display: block;
+  color: #fff;
+  font-size: 1.3rem;
+  cursor: pointer;
+  box-shadow: 0 5px 20px #89caff94;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.button:hover {
+  box-shadow: none;
+}
+
+
+/* Float Animation */
+.float{
+  animation: float 4s ease-in-out infinite;
+}
+  @keyframes float {
+  0% {  transform: translateY(0.5rem);}
+  50% { transform: translateY(2rem);}
+  100% { transform: translateY(0.5rem);}
+}
+
+@keyframes shake {
+  0%,
+  100% {transform: rotate(0deg); transform-origin: 50% 100%; }
+  10% {transform: rotate(2deg); }
+  20%, 40%, 60% { transform: rotate(-4deg); }
+  30%, 50%, 70% { transform: rotate(4deg); }
+  80% { transform: rotate(-2deg); }
+  90% { transform: rotate(2deg); }
 }
